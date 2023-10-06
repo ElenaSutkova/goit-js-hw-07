@@ -30,15 +30,21 @@ function handlerClick(event) {
         return;
     }
 
+    // Знаходимо батька і повертаємо його при кліку на картинку
     const currentImage = event.target.closest('.js-gallery-item');
-    // console.log(currentImage)
+    
+    // Присвоюємо в зміну посилання на оригінальну картинку
+    const originalImage = event.target.dataset.source;
 
     // Модальне вікно
-const instance = basicLightbox.create(`
-	// <div>
-    //     <img src="${galleryItems.original}" alt="${galleryItems.description}">
-    // </div>
-`)
-instance.show()
+    const instance = basicLightbox.create(
+    `
+	<div>
+        <img class="gallery__image" src="${originalImage}">
+    </div>`
+       
+    )
+    instance.show()
+    
+    console.log(instance)
 }
-console.log(instance)

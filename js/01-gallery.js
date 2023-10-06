@@ -12,7 +12,7 @@ container.addEventListener('click', handlerClick)
 // Створюємо розмітку 
 function galleryLayout(arr) {
     return arr.map(({ preview, original, description }) => `
-    <li class="gallery__item js-gallery-item">
+    <li class="gallery__item">
       <a class="gallery__link" href="${original}">
        <img
         class="gallery__image"

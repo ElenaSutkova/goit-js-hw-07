@@ -26,23 +26,14 @@ function galleryLayout(arr) {
 // Створюємо функцію прослуховувача подій
 function handlerClick(event) {
     event.preventDefault();
-    if (event.target === event.currentTarget) {
-        return;
-    }
+    if (event.target.nodeName !== 'IMG') return;
 
-    // Знаходимо батька і повертаємо його при кліку на картинку
-    const currentImage = event.target.closest('.js-gallery-item');
-    
     // Присвоюємо в зміну посилання на оригінальну картинку
     const originalImage = event.target.dataset.source;
 
     // Модальне вікно
     const instance = basicLightbox.create(
-    `
-	<div>
-        <img class="gallery__image" src="${originalImage}">
-    </div>`
-       
+    `<img class="gallery__image" src="${originalImage}">`
     )
     instance.show()
     

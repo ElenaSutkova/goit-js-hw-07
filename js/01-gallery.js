@@ -12,7 +12,7 @@ container.addEventListener('click', handlerClick)
 // Створюємо розмітку 
 function galleryLayout(arr) {
     return arr.map(({ preview, original, description }) => `
-    <li class="gallery__item">
+    <li class="gallery__item js-gallery-item">
       <a class="gallery__link" href="${original}">
        <img
         class="gallery__image"
@@ -25,17 +25,20 @@ function galleryLayout(arr) {
 }
 // Створюємо функцію прослуховувача подій
 function handlerClick(event) {
-    console.log(event.target)
+    event.preventDefault();
+    if (event.target === event.currentTarget) {
+        return;
+    }
+
+    const currentImage = event.target.closest('.js-gallery-item');
+    // console.log(currentImage)
+
+    // Модальне вікно
+const instance = basicLightbox.create(`
+	// <div>
+    //     <img src="${galleryItems.original}" alt="${galleryItems.description}">
+    // </div>
+`)
+instance.show()
 }
-
-
-
-
-
-
-
-// const instance = basicLightbox.create(`
-// 	<h1>Dynamic Content</h1>
-// 	<p>You can set the content of the lightbox with JS.</p>
-// `)
-// instance.show()
+console.log(instance)
